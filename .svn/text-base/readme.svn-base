@@ -1,0 +1,29 @@
+1.考本代码
+2.ln -s /usr/local/<GetApkDetails path>/aapt /bin/aapt
+
+
+3.升级python
+		1、下载
+		wget http://www.python.org/ftp/python/2.6.5/Python-2.6.5.tar.bz2
+		2、解压
+		tar jxvf Python-2.6.5.tar.bz2
+		3、编译安装
+		cd Python-2.6.5
+		./configure
+		make && make install
+		Python 默认安装目录在/usr/local/lib/python2.6
+		查看一下刚才安装的版本/usr/local/bin/python -V，看到了2.6.5吧
+		4、更改系统默认版本
+		之前查看版本使用 /usr/local/lib/python2.6 -V，现在来把系统默认的Python指向刚才安装的Python2.6。
+		(如果有人问为什么不把2.4.3卸载呢？呃，貌似网上有讲yum是基于2.4.3，所以我也就没那样折腾)
+		mv /usr/bin/python /usr/bin/python.bak
+		ln -s /usr/local/bin/python2.6 /usr/bin/python
+		敲入 python -V 查看是否成功。
+		5、修复不能正常工作的yum
+		在完成了上面4步之后，如果有使用yum的话会发现出错，这是因为yum 依赖2.4.3而现在默认的 Python 版本是2.6.5。
+		vim /usr/bin/yum
+		将首行显示的 !#/usr/bin/python 修改为 !#/usr/bin/python2.4
+		保存搞定。
+
+4.修改GetApkDetails.py文件的32行AXMLPrinter2.jar所在目录，如：
+	xmlStr = commands.getoutput('java -jar /usr/local/GetApkDetails/AXMLPrinter2.jar '+unpackPath+'/AndroidManifest.xml')
