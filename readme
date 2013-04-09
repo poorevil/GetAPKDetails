@@ -35,3 +35,10 @@
 
 	修改GetApkDetails.py文件的32行AXMLPrinter2.jar所在目录，如：
 	xmlStr = commands.getoutput('java -jar /usr/local/GetApkDetails/AXMLPrinter2.jar '+unpackPath+'/AndroidManifest.xml')
+	
+	另外，有啥不明白或者想交流的同学可以直接联系我。
+	
+【关于我】：
+	韩超
+	qq：13630574
+	mail：poorevil@gmail.com
